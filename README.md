@@ -1,44 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Project Status Application
 
-## Available Scripts
+React dashboard for tracking project statuses.
 
-In the project directory, you can run:
+## Major packages used
 
-### `npm start`
+- React
+- Redux/Redux Toolkit
+- Storybook
+- Tailwind
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Folder Structure
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+General folder structure for a component should look something like this:
 
-### `npm test`
+```
+/componentName
+  /hooks
+    useComponentNameState
+    useComponentNameDispatch
+  componentName.stories.tsx
+  componentName.tsx
+  types.ts
+  utils
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This keeps folders clean and consistent across the app, while colocating most or all component logic. Utilities that can be shared between components should be in a top-level util folder.
 
-### `npm run build`
+Info on the `/hooks` usage is in [the redux section](#Redux-Usage)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Style Guide
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Import order
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Import order should be as follows:
 
-### `npm run eject`
+- Vendors
+- Absolute
+- Relative
+- types
+- css
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Redux Usage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Abstract React components from redux logic. Do this by creating react hooks that handle all of the redux-specific work, i.e. one hook that handles state and one that handles dispatch.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Components shouldn't care about the internal workings of state management, or even what state management library is being used. You should be able to swap out redux for another library and not have to change any code in the component itself - just the state provider for that component.

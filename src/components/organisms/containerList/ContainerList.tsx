@@ -1,12 +1,20 @@
+import { ContainerProps } from '@chakra-ui/react';
 import React from 'react';
 import Container from '../../molecules/container/Container';
 
 interface ContainerListProps {
   title: string;
+  iconSize?: 'lg' | 'md' | 'sm';
+  iconColors?: 'white' | 'black' | 'green' | 'yellow' | 'red';
 }
-const ContainerList = ({ title }: ContainerListProps) => {
+
+const ContainerList = ({
+  title,
+  iconSize = 'lg',
+  iconColors = 'black',
+}: ContainerListProps) => {
   return (
-    <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 overflow-scroll pt-2">
+    <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 overflow-auto pt-2">
       <Container
         iconSize="lg"
         iconType="folder"

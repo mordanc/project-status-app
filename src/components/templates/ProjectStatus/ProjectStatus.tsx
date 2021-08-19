@@ -9,6 +9,7 @@ import { mockData } from '../../organisms/statusTable/mockData';
 import UserMessage from '../../molecules/userMessage/UserMessage';
 
 import { Project } from '../../../types';
+import Loading from '../../molecules/loading/Loading';
 
 interface ProjectStatusProps {
   navTextColor?: 'white' | 'black';
@@ -72,7 +73,7 @@ const ProjectStatus = ({
         <div className="overflow-scroll ml-10 mt-20">
           <ContainerList title="test" />
           {loading ? (
-            <UserMessage label="Loading..." />
+            <Loading color="hi" />
           ) : error ? (
             <UserMessage
               label="Oops! Something went wrong, please try again."

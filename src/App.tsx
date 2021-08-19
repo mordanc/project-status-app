@@ -30,7 +30,6 @@ function App() {
           <div
             className="flex justify-between text-xl text-white bg-gray-800 p-2 items-center fixed z-10 w-full top-0"
             style={{ width: 'inherit' }}
-            // style={{ width: '98%' }}
           >
             <span className="pl-4 text-2xl text-white">Project Status</span>
             <div>
