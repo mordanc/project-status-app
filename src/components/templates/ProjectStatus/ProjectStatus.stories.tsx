@@ -21,10 +21,12 @@ const Template: ComponentStory<typeof ProjectStatus> = args => (
 
 export const Light = Template.bind({});
 Light.args = {
+  useRealData: false,
   navTextColor: 'white',
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
+  useRealData: false,
   navTextColor: 'black',
 };

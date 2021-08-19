@@ -20,12 +20,12 @@ const NavRow = ({
 }: NavRowProps) => {
   return (
     <div
-      className={`flex flex-${orientation} text-2xl text-${
+      className={`flex flex-${orientation} w-56  text-xl font-light text-${
         textColor || 'black'
       }  cursor-pointer  pl-2 py-1 items-center`}
       onClick={onClick}
     >
-      <div className="transform hover:scale-105 hover:text-blue-400 transition">
+      <div className=" w-full hover:bg-gray-700 transition p-2 mr-2 ">
         <Icon iconSize="sm" iconType={iconType} iconColor={iconColor} />
         <span className="pl-4 font-georama">{rowText}</span>
       </div>

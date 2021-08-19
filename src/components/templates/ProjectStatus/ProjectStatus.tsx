@@ -65,9 +65,11 @@ const ProjectStatus = ({
 
   return (
     <div className="h-screen">
-      <div className="flex mt-20" style={{ height: '90%' }}>
-        <Navbar navItems={[]} textColor={navTextColor} />
-        <div className="overflow-scroll ml-10">
+      <div className="flex " style={{ height: '90%' }}>
+        <div className="w-1/5">
+          <Navbar navItems={[]} textColor={navTextColor} />
+        </div>
+        <div className="overflow-scroll ml-10 mt-20">
           <ContainerList title="test" />
           {loading ? (
             <UserMessage label="Loading..." />

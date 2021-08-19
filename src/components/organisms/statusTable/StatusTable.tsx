@@ -16,37 +16,12 @@ import { Project } from '../../../types';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { usePagination } from './hooks/usePagination';
+import { useStatusFilter } from './hooks/useStatusFilter';
 
 interface StatusTableProps {
   buttons: Buttons[];
   apiData?: Project[];
 }
-
-export const useStatusFilter = (gridApi: any, updatePage: () => any) => {
-  const statusFilter = useSelector(selectStatusFilterValue);
-
-  const dispatch = useDispatch();
-
-  const externalFilterChanged = (value: string) => {
-    dispatch(updateStatusFilter(value));
-    console.log(value);
-    setTimeout(() => {
-      gridApi?.onFilterChanged();
-      updatePage();
-    }, 100);
-  };
-
-  useEffect(() => {
-    const validValues = ['y', 'g', 'r'];
-    if (!validValues.includes(statusFilter)) {
-      externalFilterChanged('');
-    } else {
-      externalFilterChanged(statusFilter);
-    }
-  }, [statusFilter]);
-
-  return { statusFilter };
-};
 
 const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   const [gridApi, setGridApi] = useState<any>(null);
@@ -84,29 +59,6 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
     gridApi?.setQuickFilter(filterText);
     updatePage();
   }, [filterText]);
-
-  // TODO Filter logic, move out of here maybe
-  // const statusFilter = useSelector(selectStatusFilterValue);
-
-  // const dispatch = useDispatch();
-
-  // const externalFilterChanged = (value: string) => {
-  //   dispatch(updateStatusFilter(value));
-  //   console.log(value);
-  //   setTimeout(() => {
-  //     gridApi?.onFilterChanged();
-  //     updatePage();
-  //   }, 100);
-  // };
-
-  // useEffect(() => {
-  //   const validValues = ['y', 'g', 'r'];
-  //   if (!validValues.includes(statusFilter)) {
-  //     externalFilterChanged('');
-  //   } else {
-  //     externalFilterChanged(statusFilter);
-  //   }
-  // }, [statusFilter]);
 
   const { statusFilter } = useStatusFilter(gridApi, updatePage);
 
