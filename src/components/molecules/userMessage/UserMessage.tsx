@@ -1,4 +1,6 @@
-import ButtonGroup, { Buttons } from '../buttonGroup/ButtonGroup';
+import ButtonGroup from '../buttonGroup/ButtonGroup';
+
+import { Buttons } from '../buttonGroup/types';
 
 export const UserMessage = ({
   label,

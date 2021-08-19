@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-import Button, { ButtonProps } from '../../atoms/button/Button';
+import { useState } from 'react';
 
-export interface Buttons {
-  label: string;
-  onClick(): any;
-}
-interface ButtonGroupProps {
-  buttons: Buttons[];
-  enableFocus?: boolean;
-  color: 'primary' | 'secondary';
-}
+import Button from '../../atoms/button/Button';
+
+import { ButtonGroupProps } from './types';
 
 const ButtonGroup = ({
   buttons,

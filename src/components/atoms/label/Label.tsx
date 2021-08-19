@@ -1,9 +1,5 @@
-import React from 'react';
+import { LabelProps } from './types';
 
-export interface LabelProps {
-  labelTitle: string;
-  labelBody: string;
-}
 const Label = ({ labelTitle, labelBody }: LabelProps) => {
   return (
     <div className="flex flex-col w-28 uppercase break-words">

@@ -1,15 +1,6 @@
-import { Status } from '../../../types';
-import Icon, { IconProps } from '../../atoms/icon/Icon';
-import Label, { LabelProps } from '../../atoms/label/Label';
-
-type SubProps = IconProps & LabelProps;
-
-interface ContainerProps extends SubProps {
-  backgroundColor: 'red' | 'green' | 'yellow' | 'purple' | 'white' | 'blue';
-  isFocused?: boolean;
-  statusFilterValue?: Status;
-  onClick?(): any;
-}
+import Icon from '../../atoms/icon/Icon';
+import Label from '../../atoms/label/Label';
+import { ContainerProps } from './types';
 
 const Container = ({
   iconType,
@@ -30,7 +21,6 @@ const Container = ({
       <Icon iconType={iconType} iconSize={iconSize} />
       <span className="ml-10 select-none">
         <Label labelTitle={labelTitle} labelBody={labelBody} />
-        {isFocused ? 'focuuuuu' : 'noooot focuss'}
       </span>
     </div>
   );

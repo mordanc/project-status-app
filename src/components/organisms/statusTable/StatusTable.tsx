@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { mockData } from './mockData';
-import ButtonGroup, { Buttons } from '../../molecules/buttonGroup/ButtonGroup';
+import ButtonGroup from '../../molecules/buttonGroup/ButtonGroup';
 import {
   selectStatusFilterType,
   selectStatusFilterValue,
@@ -17,6 +17,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { usePagination } from './hooks/usePagination';
 import { useStatusFilter } from './hooks/useStatusFilter';
+
+import type { Buttons } from 'components/molecules/buttonGroup/types';
 
 interface StatusTableProps {
   buttons: Buttons[];
@@ -88,7 +90,7 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   };
 
   return (
-    <div className="flex flex-col" style={{ height: 600 }}>
+    <div className="flex flex-col" style={{ height: 650 }}>
       <div
         className={`bg-${statusColor}-300 text-2xl my-3 rounded p-2 select-none capitalize`}
       >

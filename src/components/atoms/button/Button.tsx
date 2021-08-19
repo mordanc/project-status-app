@@ -1,14 +1,5 @@
-import React, { useState } from 'react';
+import type { ButtonProps } from './types';
 
-export interface ButtonProps {
-  label: string | number;
-  color: 'primary' | 'secondary';
-  rounding: 'none' | 'small' | 'large';
-  roundLeft?: boolean;
-  roundRight?: boolean;
-  isFocused: boolean;
-  onClick(): any;
-}
 export const Button = ({
   label,
   onClick,
@@ -18,7 +9,6 @@ export const Button = ({
   roundRight,
   isFocused,
 }: ButtonProps) => {
-  // const [isFocused, setIsFocused] = useState(false);
   const hoverColor = color === 'primary' ? 'blue' : 'gray';
   const roundingAmount =
     rounding === 'large'

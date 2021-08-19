@@ -30,7 +30,11 @@ Info on the `/hooks` usage is in [the redux section](#Redux-Usage)
 
 ## Style Guide
 
-### Import order
+### Named vs Default import/exports
+
+Prefer named imports/exports. Default exports can be more convennient but introduce a higher risk of dependency cycles.
+
+### Import Order
 
 Import order should be as follows:
 
@@ -40,7 +44,24 @@ Import order should be as follows:
 - types
 - css
 
-## Redux Usage
+For types, use `import type from './filename'`. For more information on why, read [this](https://stackoverflow.com/questions/50441093/is-there-a-point-to-doing-import-type-rather-than-import-with-flow) stack overflow answer. Basically, it's more organized and can speed up compile time.
+
+So, a typical import order will look like this:
+
+```
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { componentName } from 'components/componentName';
+
+import { useComponentNameState } from './useComponentNameState';
+
+import type { ComponentPropType } from './types';
+
+import './styles.css';
+```
+
+### Redux Usage
 
 Abstract React components from redux logic. Do this by creating react hooks that handle all of the redux-specific work, i.e. one hook that handles state and one that handles dispatch.
 
