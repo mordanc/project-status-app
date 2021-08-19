@@ -1,6 +1,8 @@
-import { ContainerProps } from '@chakra-ui/react';
 import React from 'react';
+
 import Container from '../../molecules/container/Container';
+import SelectableList from '../selectableList/SelectableList';
+import { useContainerListDispatch } from './hooks/useContainerListDispatch';
 
 interface ContainerListProps {
   title: string;
@@ -13,8 +15,13 @@ const ContainerList = ({
   iconSize = 'lg',
   iconColors = 'black',
 }: ContainerListProps) => {
+  const { applyTableStatusFilter } = useContainerListDispatch();
+
   return (
-    <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 overflow-auto pt-2">
+    <SelectableList
+      className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 overflow-auto pt-2"
+      defaultSelectedIndex={0}
+    >
       <Container
         iconSize="lg"
         iconType="folder"
@@ -22,7 +29,7 @@ const ContainerList = ({
         backgroundColor="blue"
         labelBody="All Projects"
         labelTitle="28"
-        statusFilterValue="A"
+        onClick={() => applyTableStatusFilter('A')}
       />
       <Container
         iconSize="lg"
@@ -31,7 +38,7 @@ const ContainerList = ({
         backgroundColor="yellow"
         labelBody="Yellow Projects"
         labelTitle="12"
-        statusFilterValue="Y"
+        onClick={() => applyTableStatusFilter('Y')}
       />
       <Container
         iconSize="lg"
@@ -40,7 +47,7 @@ const ContainerList = ({
         backgroundColor="red"
         labelBody="Red Projects"
         labelTitle="12"
-        statusFilterValue="R"
+        onClick={() => applyTableStatusFilter('R')}
       />
       <Container
         iconSize="lg"
@@ -49,9 +56,9 @@ const ContainerList = ({
         backgroundColor="green"
         labelBody="Green Projects"
         labelTitle="12"
-        statusFilterValue="G"
+        onClick={() => applyTableStatusFilter('G')}
       />
-    </div>
+    </SelectableList>
   );
 };
 

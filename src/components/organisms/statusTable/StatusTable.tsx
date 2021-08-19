@@ -64,7 +64,7 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
 
   const isExternalFilterPresent = () => true;
   const doesExternalFilterPass = (node: any) => {
-    if (statusFilter === '') return true;
+    if (statusFilter === 'A') return true;
     return (
       node.data?.overallStatus?.toLocaleLowerCase?.() ===
       statusFilter.toLocaleLowerCase()
@@ -84,7 +84,7 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   };
 
   const statusColumnValidParams = {
-    values: ['R', 'G', 'Y'],
+    values: ['R', 'G', 'Y', 'A'],
   };
 
   return (

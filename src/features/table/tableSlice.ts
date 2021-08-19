@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
-import { StatusTypes } from '../../types';
-// import { fetchCount } from './tableAPI';
+import { Status, StatusTypes } from '../../types';
 
 export interface CounterState {
-  statusFilterValue: string;
+  statusFilterValue: Status;
 }
 
 const initialState: CounterState = {
-  statusFilterValue: '',
+  statusFilterValue: 'A',
 };
 
 export const counterSlice = createSlice({
@@ -17,8 +16,8 @@ export const counterSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    updateStatusFilter: (state, action: PayloadAction<string>) => {
-      const newValue = action.payload?.toLocaleLowerCase?.();
+    updateStatusFilter: (state, action: PayloadAction<Status>) => {
+      const newValue = action.payload;
 
       return { ...state, statusFilterValue: newValue };
     },
@@ -32,11 +31,11 @@ export const selectStatusFilterValue = (state: RootState) =>
 
 export const selectStatusFilterType = (state: RootState) => {
   switch (state.table.statusFilterValue) {
-    case 'g':
+    case 'G':
       return StatusTypes.GREEN_PROJECTS;
-    case 'r':
+    case 'R':
       return StatusTypes.RED_PROJECTS;
-    case 'y':
+    case 'Y':
       return StatusTypes.YELLOW_PROJECTS;
     default:
       return StatusTypes.ALL_PROJECTS;

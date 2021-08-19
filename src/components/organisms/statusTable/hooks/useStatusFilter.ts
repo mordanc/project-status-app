@@ -5,12 +5,14 @@ import {
   updateStatusFilter,
 } from '../../../../features/table/tableSlice';
 
+import { Status } from '../../../../types';
+
 export const useStatusFilter = (gridApi: any, updatePage: () => any) => {
   const statusFilter = useSelector(selectStatusFilterValue);
 
   const dispatch = useDispatch();
 
-  const externalFilterChanged = (value: string) => {
+  const externalFilterChanged = (value: Status) => {
     dispatch(updateStatusFilter(value));
     console.log(value);
     setTimeout(() => {
@@ -20,9 +22,9 @@ export const useStatusFilter = (gridApi: any, updatePage: () => any) => {
   };
 
   useEffect(() => {
-    const validValues = ['y', 'g', 'r'];
+    const validValues = ['Y', 'G', 'R'];
     if (!validValues.includes(statusFilter)) {
-      externalFilterChanged('');
+      externalFilterChanged('A');
     } else {
       externalFilterChanged(statusFilter);
     }
