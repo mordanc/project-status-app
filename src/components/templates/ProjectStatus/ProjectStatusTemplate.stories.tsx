@@ -1,10 +1,9 @@
-import React from 'react';
+import { store } from 'app/store';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { Provider } from 'react-redux';
 
-import ProjectStatus from './ProjectStatus';
-import { store } from '../../../app/store';
+import ProjectStatus from './ProjectStatusTemplate';
 
 export default {
   title: 'components/templates/ProjectStatus',

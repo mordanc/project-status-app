@@ -1,7 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import NavRow from 'components/molecules/NavRow/NavRow';
 
-import NavRow from '../../molecules/NavRow/NavRow';
 import SelectableList from '../selectableList/SelectableList';
 
 interface NavbarProps {

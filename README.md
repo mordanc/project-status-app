@@ -6,6 +6,7 @@ React dashboard for tracking project statuses.
 
 - React
 - Redux/Redux Toolkit
+- Typescript
 - Storybook
 - Tailwind
 
