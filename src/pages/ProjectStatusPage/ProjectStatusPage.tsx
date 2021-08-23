@@ -2,7 +2,8 @@ import { useProjectStatusState } from 'pages/ProjectStatusPage/hooks/useProjectS
 import ProjectStatus from 'components/templates/ProjectStatus/ProjectStatusTemplate';
 
 const ProjectStatusPage = () => {
-  const { data, loading, error, fetchAndSetData } = useProjectStatusState();
+  const { data, loading, error, fetchAndSetData } = useProjectStatusState(true);
+
   return (
     <ProjectStatus
       data={data}

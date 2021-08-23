@@ -1,11 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import StoryRouter from 'storybook-react-router';
 import { Provider } from 'react-redux';
 
 import ContainerList from './ContainerList';
 import * as IconStories from '../../atoms/icon/Icon.stories';
 import { store } from '../../../app/store';
+import { ContainerProps } from 'components/molecules/container/types';
+import { Status } from 'types';
 
 export default {
   title: 'Components/organisms/ContainerList',
@@ -21,11 +22,48 @@ export default {
   },
 } as ComponentMeta<typeof ContainerList>;
 
+const containers: Partial<ContainerProps & { filterValue: Status }>[] = [
+  {
+    iconSize: 'lg',
+    iconType: 'folder',
+    iconColor: 'black',
+    backgroundColor: 'blue',
+    labelBody: 'All Projects',
+    labelTitle: '83',
+    filterValue: 'A',
+  },
+  {
+    iconSize: 'lg',
+    iconType: 'info',
+    iconColor: 'black',
+    backgroundColor: 'yellow',
+    labelBody: 'Yellow Projects',
+    labelTitle: '83',
+    filterValue: 'Y',
+  },
+  {
+    iconSize: 'lg',
+    iconType: 'warning',
+    iconColor: 'black',
+    backgroundColor: 'red',
+    labelBody: 'Red Projects',
+    labelTitle: '83',
+    filterValue: 'R',
+  },
+  {
+    iconSize: 'lg',
+    iconType: 'thumbsUp',
+    iconColor: 'black',
+    backgroundColor: 'green',
+    labelBody: 'Green Projects',
+    labelTitle: '83',
+    filterValue: 'G',
+  },
+];
+
 const Template: ComponentStory<typeof ContainerList> = args => (
   <ContainerList {...args} />
 );
 
 export const Standard = Template.bind({});
-Standard.args = {
-  title: 'hey',
-};
+Standard.args = { containers };

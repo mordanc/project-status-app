@@ -4,6 +4,7 @@ import StoryRouter from 'storybook-react-router';
 import { Provider } from 'react-redux';
 
 import ProjectStatus from './ProjectStatusTemplate';
+import { useProjectStatusState } from 'pages/ProjectStatusPage/hooks/useProjectStatusState';
 
 export default {
   title: 'components/templates/ProjectStatus',
@@ -14,18 +15,13 @@ export default {
   ],
 } as ComponentMeta<typeof ProjectStatus>;
 
-const Template: ComponentStory<typeof ProjectStatus> = args => (
-  <ProjectStatus {...args} />
-);
+const Template: ComponentStory<typeof ProjectStatus> = args => {
+  const { data, loading, error, fetchAndSetData } = useProjectStatusState(
+    false,
+  );
 
-export const Light = Template.bind({});
-Light.args = {
-  useRealData: false,
-  navTextColor: 'white',
+  return <ProjectStatus {...{ args, data, error, loading, fetchAndSetData }} />;
 };
 
-export const Dark = Template.bind({});
-Dark.args = {
-  useRealData: false,
-  navTextColor: 'black',
-};
+export const Default = Template.bind({});
+Default.args = {};

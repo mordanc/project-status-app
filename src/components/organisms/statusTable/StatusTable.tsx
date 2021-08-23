@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
+
+import { selectStatusFilterType } from 'features/table/tableSlice';
+import type { Buttons } from 'components/molecules/buttonGroup/types';
 
 import { mockData } from './mockData';
 import ButtonGroup from '../../molecules/buttonGroup/ButtonGroup';
-import {
-  selectStatusFilterType,
-  selectStatusFilterValue,
-  updateStatusFilter,
-} from '../../../features/table/tableSlice';
-
-import { Project } from '../../../types';
-
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { usePagination } from './hooks/usePagination';
 import { useStatusFilter } from './hooks/useStatusFilter';
 
-import type { Buttons } from 'components/molecules/buttonGroup/types';
+import { Project } from 'types';
+
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 interface StatusTableProps {
   buttons: Buttons[];
@@ -55,12 +51,12 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
     setTimeout(() => {
       updatePage();
     }, 500);
-  }, [gridApi]);
+  }, [gridApi, updatePage]);
 
   useEffect(() => {
     gridApi?.setQuickFilter(filterText);
     updatePage();
-  }, [filterText]);
+  }, [filterText, gridApi, updatePage]);
 
   const { statusFilter } = useStatusFilter(gridApi, updatePage);
 
@@ -77,12 +73,10 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   const statusColor = useSelector(selectStatusFilterType);
 
   const cellValueChanged = async (params: any) => {
-    console.log(params);
-    const res = await axios.put(
+    await axios.put(
       `http://localhost:3004/projects/${params.data.id}`,
       params.data,
     );
-    console.log(res);
   };
 
   const statusColumnValidParams = {
@@ -153,18 +147,18 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
           ></AgGridColumn>
         </AgGridReact>
       </div>
-      <div className="mt-3 flex items-center">
-        <span className="w-1/3">
+      <div className="mt-3 flex items-center flex-col md:flex-row pb-2 space-y-2 md:space-y-0">
+        <span className="md:w-1/3">
           <ButtonGroup
             color="primary"
             buttons={pageSizeButtons}
             enableFocus={true}
           />
         </span>
-        <div className="w-1/3 flex justify-center">
+        <div className="md:w-1/3 flex justify-center">
           <ButtonGroup color="primary" buttons={paginationButtons} />
         </div>
-        <div className="md:w-1/3 flex flex-col md:flex-row md:justify-end">
+        <div className="md:w-1/3 flex  md:flex-row md:justify-end">
           <span>Showing page {currentPage}&nbsp;</span>
           <span>of {totalPages}</span>
           <span>, of {totalRows} entries</span>

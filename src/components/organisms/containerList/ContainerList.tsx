@@ -1,20 +1,18 @@
+import { ContainerProps } from 'components/molecules/container/types';
 import React from 'react';
+import { Status } from 'types';
 
 import Container from '../../molecules/container/Container';
 import SelectableList from '../selectableList/SelectableList';
 import { useContainerListDispatch } from './hooks/useContainerListDispatch';
 
 interface ContainerListProps {
-  title: string;
-  iconSize?: 'lg' | 'md' | 'sm';
-  iconColors?: 'white' | 'black' | 'green' | 'yellow' | 'red';
+  containers?: Partial<ContainerProps & { filterValue: Status }>[];
 }
 
-const ContainerList = ({
-  title,
-  iconSize = 'lg',
-  iconColors = 'black',
-}: ContainerListProps) => {
+export type ContainerPropsList = {};
+
+const ContainerList = ({ containers }: ContainerListProps) => {
   const { applyTableStatusFilter } = useContainerListDispatch();
 
   return (
@@ -22,42 +20,21 @@ const ContainerList = ({
       className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 overflow-auto pt-2"
       defaultSelectedIndex={0}
     >
-      <Container
-        iconSize="lg"
-        iconType="folder"
-        iconColor="black"
-        backgroundColor="blue"
-        labelBody="All Projects"
-        labelTitle="28"
-        onClick={() => applyTableStatusFilter('A')}
-      />
-      <Container
-        iconSize="lg"
-        iconType="info"
-        iconColor="black"
-        backgroundColor="yellow"
-        labelBody="Yellow Projects"
-        labelTitle="12"
-        onClick={() => applyTableStatusFilter('Y')}
-      />
-      <Container
-        iconSize="lg"
-        iconType="warning"
-        iconColor="black"
-        backgroundColor="red"
-        labelBody="Red Projects"
-        labelTitle="12"
-        onClick={() => applyTableStatusFilter('R')}
-      />
-      <Container
-        iconSize="lg"
-        iconType="thumbsUp"
-        iconColor="black"
-        backgroundColor="green"
-        labelBody="Green Projects"
-        labelTitle="12"
-        onClick={() => applyTableStatusFilter('G')}
-      />
+      {containers?.map(container => {
+        return (
+          <Container
+            iconSize={container.iconSize || 'lg'}
+            iconType={container.iconType || 'circle'}
+            iconColor={container.iconColor}
+            backgroundColor={container.backgroundColor || 'blue'}
+            labelBody={container.labelBody || 'No data'}
+            labelTitle={container.labelTitle || 'No data'}
+            onClick={() =>
+              applyTableStatusFilter(container?.filterValue || 'A')
+            }
+          />
+        );
+      })}
     </SelectableList>
   );
 };

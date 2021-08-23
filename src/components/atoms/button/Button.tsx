@@ -21,11 +21,10 @@ export const Button = ({
     <button
       className={`${
         isFocused ? `bg-${hoverColor}-300` : ''
-      } border-2 border-gray-300 px-2 py-1 hover:bg-${hoverColor}-300 hover:border-white transition ${roundingAmount} ${
+      } border-2 border-gray-300 px-2 py-1 hover:bg-${hoverColor}-300 transition ${roundingAmount} ${
         roundLeft && 'rounded-l-lg'
       } ${roundRight && 'rounded-r-lg'}`}
       onClick={() => {
-        // setIsFocused(!isFocused);
         onClick();
       }}
     >

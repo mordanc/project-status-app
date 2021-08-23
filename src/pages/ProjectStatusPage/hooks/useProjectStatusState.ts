@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { mockData } from 'components/organisms/statusTable/mockData';
 import { axiosPromiseHandler } from 'utils/axiosPromiseHandler';
 
 import { Project } from 'types';
 
-export const useProjectStatusState = () => {
+export const useProjectStatusState = (useRealData = false) => {
   const [data, setData] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -25,7 +26,6 @@ export const useProjectStatusState = () => {
     if (error) {
       setError(error);
       setLoading(false);
-      console.log(error);
       return;
     }
 
@@ -34,8 +34,14 @@ export const useProjectStatusState = () => {
   }
 
   useEffect(() => {
-    fetchAndSetData();
-  }, []);
+    if (useRealData) {
+      fetchAndSetData();
+    } else {
+      setData(mockData);
+      setError(false);
+      setLoading(false);
+    }
+  }, [useRealData]);
 
   return { data, loading, error, fetchAndSetData };
 };

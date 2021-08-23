@@ -13,7 +13,7 @@ const NavHeading = ({ text }: { text: string }) => (
 
 const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
   return (
-    <div className="hidden md:flex md:flex-col fixed left-0 top-0 h-full pt-20 pl-2 bg-gray-900">
+    <div className="hidden md:flex md:flex-col fixed left-0 top-0 h-full pt-20 pl-4 bg-gray-900">
       <NavHeading text="projects" />
 
       <SelectableList className="flex flex-col md:space-y-2">

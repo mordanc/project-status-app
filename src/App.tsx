@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from 'components/organisms/navbar/Navbar';
+import { Header } from 'components/organisms/header/Header';
 import ProjectStatusPage from 'pages/ProjectStatusPage/ProjectStatusPage';
 
 import './App.css';
@@ -21,54 +22,23 @@ function Admin() {
   return <h2 className="text-black text-3xl pl-10 pt-20">Admin Content</h2>;
 }
 
-export const Header = () => {
-  return (
-    <div
-      className="flex justify-between text-xl text-white bg-gray-800 p-2 items-center fixed z-10 w-full top-0"
-      style={{ width: 'inherit' }}
-    >
-      <span className="pl-4 text-2xl text-white">Project Status</span>
-      <div>
-        <Link to="/home">
-          <button className="transform transition hover:scale-105 hover:text-blue-300 mx-2">
-            Home
-          </button>
-        </Link>
-        <Link to="/about">
-          <button className="transform transition hover:scale-105 hover:text-blue-300 mx-2">
-            About
-          </button>
-        </Link>
-        <Link to="/admin">
-          <button className="transform transition hover:scale-105 hover:text-blue-300 mx-2">
-            Admin
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
-};
-
 function App() {
   return (
     <div>
       <Router>
-        <div className="w-full">
+        <div className="w-full flex">
           <Header />
 
-          <Navbar navItems={[]} textColor={'white'} />
-
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-            <Route path="/">
-              <ProjectStatusPage />
-            </Route>
-          </Switch>
+          <div className="w-1/5">
+            <Navbar navItems={[]} textColor={'white'} />
+          </div>
+          <div className="w-4/5">
+            <Switch>
+              <Route path="/about" component={About} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/" component={ProjectStatusPage} />
+            </Switch>
+          </div>
         </div>
       </Router>
     </div>
