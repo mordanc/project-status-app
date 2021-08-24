@@ -20,8 +20,8 @@ export const Button = ({
   return (
     <button
       className={`${
-        isFocused ? `bg-${hoverColor}-300` : ''
-      } border-2 border-gray-300 px-2 py-1 hover:bg-${hoverColor}-300 transition ${roundingAmount} ${
+        isFocused ? `bg-${hoverColor}-100` : ''
+      } border-2 border-gray-300 px-2 py-1 hover:bg-${hoverColor}-100 shadow-sm transition ${roundingAmount} ${
         roundLeft && 'rounded-l-lg'
       } ${roundRight && 'rounded-r-lg'}`}
       onClick={() => {

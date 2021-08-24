@@ -36,7 +36,7 @@ const NavRow = ({
         <div
           className={`w-full hover:bg-gray-700 ${
             isFocused && 'bg-gray-700'
-          } transition p-2 mr-2`}
+          } transition p-2 mr-2 rounded`}
         >
           <Icon iconSize="sm" iconType={iconType} iconColor={iconColor} />
           <span className="pl-4 font-georama">{rowText}</span>

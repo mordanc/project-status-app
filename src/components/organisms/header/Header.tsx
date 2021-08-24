@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export const Header = ({}) => {
   return (
     <div
-      className="flex justify-between text-xl text-white bg-gray-800 p-2 items-center fixed z-10 w-full top-0"
+      className="flex justify-between text-xl text-white bg-gray-800 p-4 items-center fixed z-10 w-full top-0"
       style={{ width: 'inherit' }}
     >
       <span className="pl-4 text-2xl text-white">Project Status</span>

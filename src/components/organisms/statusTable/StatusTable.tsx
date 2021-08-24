@@ -122,29 +122,25 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
             filter={true}
             field="projectName"
             editable={true}
-          ></AgGridColumn>
+          />
           <AgGridColumn
             sortable={true}
             filter={true}
             field="projectManager"
             editable={true}
-          ></AgGridColumn>
+          />
           <AgGridColumn
             sortable={true}
             field="overallStatus"
             cellEditor="agPopupSelectCellEditor"
             cellEditorParams={statusColumnValidParams}
-          ></AgGridColumn>
+          />
           <AgGridColumn
             sortable={true}
             field="percentageComplete"
             editable={true}
-          ></AgGridColumn>
-          <AgGridColumn
-            sortable={true}
-            field="modifiedDate"
-            editable={true}
-          ></AgGridColumn>
+          />
+          <AgGridColumn sortable={true} field="modifiedDate" editable={true} />
         </AgGridReact>
       </div>
       <div className="mt-3 flex items-center flex-col md:flex-row pb-2 space-y-2 md:space-y-0">

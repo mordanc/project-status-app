@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import Icon from '../../atoms/icon/Icon';
 import Label from '../../atoms/label/Label';
 import { ContainerProps } from './types';

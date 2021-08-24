@@ -4,6 +4,7 @@ import {
   PropsWithChildren,
   ReactElement,
   cloneElement,
+  useEffect,
 } from 'react';
 
 type SelectableListChild = {
@@ -27,9 +28,11 @@ const SelectableList: React.FC<SelectableListProps> = ({
   children,
   className,
 }) => {
-  const [selectedChildIndex, setSelectedChildIndex] = useState(
-    defaultSelectedIndex || -1,
-  );
+  const [selectedChildIndex, setSelectedChildIndex] = useState(-1);
+
+  useEffect(() => {
+    setSelectedChildIndex(defaultSelectedIndex ?? -1);
+  }, [defaultSelectedIndex]);
 
   return (
     <div className={className}>

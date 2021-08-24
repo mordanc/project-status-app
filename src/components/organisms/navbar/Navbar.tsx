@@ -16,7 +16,10 @@ const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
     <div className="hidden md:flex md:flex-col fixed left-0 top-0 h-full pt-20 pl-4 bg-gray-900">
       <NavHeading text="projects" />
 
-      <SelectableList className="flex flex-col md:space-y-2">
+      <SelectableList
+        className="flex flex-col md:space-y-2"
+        defaultSelectedIndex={0}
+      >
         <NavRow
           iconColor={textColor}
           rowText="All Projects"
