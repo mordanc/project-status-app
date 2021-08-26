@@ -8,6 +8,6 @@ type SubProps = IconProps & LabelProps;
 export interface ContainerProps extends SubProps {
   backgroundColor: 'red' | 'green' | 'yellow' | 'purple' | 'white' | 'blue';
   isFocused?: boolean;
-  statusFilterValue?: Status;
+  filterValue: Status;
   onClick?(): any;
 }

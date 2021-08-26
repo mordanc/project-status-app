@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { selectStatusFilterType } from 'features/table/tableSlice';
+import {
+  selectStatusFilterType,
+  updateNumberOfProjects,
+} from 'features/table/tableSlice';
 import type { Buttons } from 'components/molecules/buttonGroup/types';
 
 import { mockData } from './mockData';
@@ -11,7 +14,7 @@ import ButtonGroup from '../../molecules/buttonGroup/ButtonGroup';
 import { usePagination } from './hooks/usePagination';
 import { useStatusFilter } from './hooks/useStatusFilter';
 
-import { Project } from 'types';
+import { Project, Status } from 'types';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -21,10 +24,27 @@ interface StatusTableProps {
   apiData?: Project[];
 }
 
+export type NumberOfProjects = { [k in Status]: number };
+
+interface ProjectList {
+  projects: RowData[];
+}
+
+interface RowData {
+  id: number;
+  projectName: string;
+  projectManager: string;
+  overallStatus: Status;
+  percentageComplete: number;
+  modifiedDate: string;
+}
+
 const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   const [gridApi, setGridApi] = useState<any>(null);
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState<RowData[]>([]);
   const [filterText, setFilterText] = useState('');
+
+  const [numberOfProjects, setNumberOfProjects] = useState({});
 
   const {
     currentPage,
@@ -35,6 +55,8 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
     pageSizeButtons,
   } = usePagination(gridApi);
 
+  const { statusFilter } = useStatusFilter(gridApi, updatePage);
+
   const onGridReady = (params: any) => {
     setGridApi(params.api);
 
@@ -44,6 +66,20 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
 
     updateData(mockData);
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const nums: NumberOfProjects = {
+      A: rowData?.length,
+      R: 0,
+      G: 0,
+      Y: 0,
+    };
+
+    rowData?.map?.(row => (nums[row?.overallStatus] += 1));
+
+    dispatch(updateNumberOfProjects(nums));
+  }, [rowData]);
 
   useEffect(() => {
     if (!gridApi) return;
@@ -58,8 +94,6 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
     updatePage();
   }, [filterText, gridApi, updatePage]);
 
-  const { statusFilter } = useStatusFilter(gridApi, updatePage);
-
   const isExternalFilterPresent = () => true;
   const doesExternalFilterPass = (node: any) => {
     if (statusFilter === 'A') return true;
@@ -72,6 +106,7 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
   // table title color
   const statusColor = useSelector(selectStatusFilterType);
 
+  // TODO abstract to prop
   const cellValueChanged = async (params: any) => {
     await axios.put(
       `http://localhost:3004/projects/${params.data.id}`,

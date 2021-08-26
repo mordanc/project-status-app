@@ -1,4 +1,4 @@
 export interface LabelProps {
-  labelTitle: string;
-  labelBody: string;
+  labelTitle?: string | number;
+  labelBody?: string | number;
 }

@@ -30,4 +30,5 @@ Primary.args = {
   backgroundColor: 'green',
   ...IconStories.Large.args,
   ...LabelStories.Primary.args,
+  labelBody: 'A',
 };

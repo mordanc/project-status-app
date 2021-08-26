@@ -1,13 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { NumberOfProjects } from 'components/organisms/statusTable/StatusTable';
 import { RootState } from '../../app/store';
 import { Status, StatusTypes } from '../../types';
 
-export interface CounterState {
+export interface TableState {
   statusFilterValue: Status;
+  numberOfProjects: NumberOfProjects;
 }
 
-const initialState: CounterState = {
+const initialState: TableState = {
   statusFilterValue: 'A',
+  numberOfProjects: {
+    A: 0,
+    R: 0,
+    G: 0,
+    Y: 0,
+  },
 };
 
 export const counterSlice = createSlice({
@@ -21,13 +29,33 @@ export const counterSlice = createSlice({
 
       return { ...state, statusFilterValue: newValue };
     },
+    updateNumberOfProjects: (
+      state,
+      action: PayloadAction<NumberOfProjects>,
+    ) => {
+      const newValue = action.payload;
+
+      return { ...state, numberOfProjects: newValue };
+    },
   },
 });
 
-export const { updateStatusFilter } = counterSlice.actions;
+export const {
+  updateStatusFilter,
+  updateNumberOfProjects,
+} = counterSlice.actions;
 
 export const selectStatusFilterValue = (state: RootState) =>
   state.table.statusFilterValue;
+
+export const selectNumberOfProjects = (
+  state: RootState,
+  projectFilter?: Status,
+) => state.table.numberOfProjects;
+
+export const selectNumberOfProjectsByType = (projectFilter: Status) => (
+  state: RootState,
+) => state.table.numberOfProjects[projectFilter];
 
 export const selectStatusFilterType = (state: RootState) => {
   switch (state.table.statusFilterValue) {

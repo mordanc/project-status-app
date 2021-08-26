@@ -29,6 +29,7 @@ const ContainerList = ({ containers }: ContainerListProps) => {
             backgroundColor={container.backgroundColor || 'blue'}
             labelBody={container.labelBody || 'No data'}
             labelTitle={container.labelTitle || 'No data'}
+            filterValue={container?.filterValue || 'A'}
             onClick={() =>
               applyTableStatusFilter(container?.filterValue || 'A')
             }

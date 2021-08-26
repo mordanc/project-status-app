@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from 'components/organisms/navbar/Navbar';
 import { Header } from 'components/organisms/header/Header';
 import ProjectStatusPage from 'pages/ProjectStatusPage/ProjectStatusPage';
+import CreateProjectPage from 'pages/CreateProjectPage/CreateProjectPage';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
             <Switch>
               <Route path="/about" component={About} />
               <Route path="/admin" component={Admin} />
+              <Route path="/createProject" component={CreateProjectPage} />
               <Route path="/" component={ProjectStatusPage} />
             </Switch>
           </div>
