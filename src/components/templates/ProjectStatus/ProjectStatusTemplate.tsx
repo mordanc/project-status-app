@@ -14,7 +14,6 @@ const buttons = [
   { label: '4', onClick: () => console.log('4') },
 ];
 
-// make the container component itself get the number of projects by its filterValue
 const containers: Partial<ContainerProps & { filterValue: Status }>[] = [
   {
     iconSize: 'lg',

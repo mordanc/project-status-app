@@ -46,5 +46,13 @@ function App() {
     </div>
   );
 }
+// function App() {
+//   return (
+//     <div className="w-screen h-screen">
+//       <div className="h-16">Header</div>
+//       <div className="flex flex-col w-1/12 bg-gray-700 h-full">sidebar</div>
+//     </div>
+//   );
+// }
 
 export default App;
