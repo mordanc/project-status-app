@@ -1,4 +1,6 @@
 import NavRow from 'components/molecules/NavRow/NavRow';
+import { updateStatusFilter } from 'features/table/tableSlice';
+import { useDispatch } from 'react-redux';
 
 import SelectableList from '../selectableList/SelectableList';
 
@@ -12,6 +14,8 @@ const NavHeading = ({ text }: { text: string }) => (
 );
 
 const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="hidden md:flex md:flex-col fixed left-0 top-0 h-full pt-20 pl-4 bg-gray-900">
       <NavHeading text="projects" />
@@ -24,7 +28,7 @@ const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
           iconColor={textColor}
           rowText="All Projects"
           iconType="folder"
-          onClick={() => {}}
+          onClick={() => dispatch(updateStatusFilter('A'))}
           textColor={textColor}
           route="allProjects"
         />
@@ -32,7 +36,7 @@ const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
           iconColor={textColor}
           rowText="Red Projects"
           iconType="warning"
-          onClick={() => {}}
+          onClick={() => dispatch(updateStatusFilter('R'))}
           textColor={textColor}
           route="redProjects"
         />
@@ -40,7 +44,7 @@ const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
           iconColor={textColor}
           rowText="Yellow Projects"
           iconType="info"
-          onClick={() => {}}
+          onClick={() => dispatch(updateStatusFilter('Y'))}
           textColor={textColor}
           route="yellowProjects"
         />
@@ -48,7 +52,7 @@ const Navbar = ({ navItems = [], textColor }: NavbarProps) => {
           iconColor={textColor}
           rowText="Green Projects"
           iconType="thumbsUp"
-          onClick={() => {}}
+          onClick={() => dispatch(updateStatusFilter('G'))}
           textColor={textColor}
           route="greenProjects"
         />

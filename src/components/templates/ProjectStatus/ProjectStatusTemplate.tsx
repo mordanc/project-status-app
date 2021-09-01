@@ -62,7 +62,7 @@ const ProjectStatusTemplate = ({
   console.log(typeof fetchAndSetData);
   return (
     <div className="flex">
-      <div className="md:overflow-auto md:ml-10 md:mt-20">
+      <div className="md:overflow-auto md:mx-10 md:mt-20">
         <ContainerList containers={containers} />
 
         {loading ? (

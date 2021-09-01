@@ -78,6 +78,7 @@ const CreateProjectPage = () => {
           <label>Date</label>
           <Input
             className="border-black border"
+            placeholder={'2017-12-15 07:18:33'}
             {...register('modifiedDate', { required: true, maxLength: 20 })}
           />
         </div>

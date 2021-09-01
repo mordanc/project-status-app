@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 import { mockData } from 'components/organisms/statusTable/mockData';
 import { axiosPromiseHandler } from 'utils/axiosPromiseHandler';
@@ -31,7 +32,16 @@ export const useProjectStatusState = (useRealData = false) => {
       return;
     }
 
-    setData(response.data);
+    const data = response.data?.map((row: any) => {
+      const date = new Date(row.modifiedDate);
+      let newDate = row.modifiedDate;
+      if (date) {
+        newDate = format(date, 'Pp');
+      }
+      console.log(newDate);
+      return { ...row, modifiedDate: newDate };
+    });
+    setData(data);
     setLoading(false);
   }
 

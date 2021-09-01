@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const Header = ({}) => {
+export const Header = () => {
   return (
     <div
       className="flex justify-between text-xl text-white bg-gray-800 p-4 items-center fixed z-10 w-full top-0"

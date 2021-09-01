@@ -19,7 +19,7 @@ export default {
   decorators: [StoryRouter()],
 } as ComponentMeta<typeof Header>;
 
-const Template: ComponentStory<typeof Header> = args => <Header {...args} />;
+const Template: ComponentStory<typeof Header> = () => <Header />;
 
 export const Standard = Template.bind({});
 Standard.args = {

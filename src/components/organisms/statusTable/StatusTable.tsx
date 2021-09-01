@@ -26,10 +26,6 @@ interface StatusTableProps {
 
 export type NumberOfProjects = { [k in Status]: number };
 
-interface ProjectList {
-  projects: RowData[];
-}
-
 interface RowData {
   id: number;
   projectName: string;
@@ -39,12 +35,10 @@ interface RowData {
   modifiedDate: string;
 }
 
-const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
+const StatusTable = ({ apiData }: StatusTableProps) => {
   const [gridApi, setGridApi] = useState<any>(null);
   const [rowData, setRowData] = useState<RowData[]>([]);
   const [filterText, setFilterText] = useState('');
-
-  const [numberOfProjects, setNumberOfProjects] = useState({});
 
   const {
     currentPage,
@@ -79,7 +73,7 @@ const StatusTable = ({ buttons, apiData }: StatusTableProps) => {
     rowData?.map?.(row => (nums[row?.overallStatus] += 1));
 
     dispatch(updateNumberOfProjects(nums));
-  }, [rowData]);
+  }, [rowData, dispatch]);
 
   useEffect(() => {
     if (!gridApi) return;
