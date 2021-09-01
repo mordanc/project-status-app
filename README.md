@@ -25,6 +25,15 @@ General folder structure for a component should look something like this:
   utils
 ```
 
+atom - lowest level component, receives props and displays data.
+molecule - still low level, accepts props and displays atoms
+
+organism - higher level component, displays multiple molecules
+
+page - highest level, reads from state and passes props to organisms
+
+(label, icon) props -> container props -> ContainerList props
+
 This keeps folders clean and consistent across the app, while colocating most or all component logic. Utilities that can be shared between components should be in a top-level util folder.
 
 Info on the `/hooks` usage is in [the redux section](#Redux-Usage)

@@ -38,7 +38,7 @@ export const useProjectStatusState = (useRealData = false) => {
       if (date) {
         newDate = format(date, 'Pp');
       }
-      console.log(newDate);
+
       return { ...row, modifiedDate: newDate };
     });
     setData(data);
