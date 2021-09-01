@@ -13,12 +13,14 @@ export const useProjectStatusState = (useRealData = false) => {
 
   async function fetchAndSetData() {
     setLoading(true);
+    setError(false);
 
     await new Promise(res =>
       setTimeout(() => {
         res('hi');
       }, 1000),
     );
+
     const [response, error] = await axiosPromiseHandler(
       axios.get('http://localhost:3004/projects'),
     );

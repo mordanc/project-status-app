@@ -59,6 +59,7 @@ const ProjectStatusTemplate = ({
   error,
   fetchAndSetData,
 }: ProjectStatusProps) => {
+  console.log(typeof fetchAndSetData);
   return (
     <div className="flex">
       <div className="md:overflow-auto md:ml-10 md:mt-20">

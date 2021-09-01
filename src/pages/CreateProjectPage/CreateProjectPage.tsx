@@ -25,6 +25,7 @@ export const InputDiv = ({
   registerProps: any;
   className?: string;
 }) => {
+  console.log(typeof ((x: any) => 2 * x));
   return (
     <div className="flex flex-col w-32">
       <label>{labelText}</label>
