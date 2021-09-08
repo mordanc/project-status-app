@@ -7,15 +7,7 @@ import {
   useEffect,
 } from 'react';
 
-type SelectableListChild = {
-  isFocused: boolean;
-  onClick(): any;
-};
-
-type SelectableListProps = {
-  defaultSelectedIndex?: number;
-  className?: string;
-};
+import { SelectableListChild, SelectableListProps } from './types';
 
 /**
  * Accepts any React Element and renders them in a list. If the children have an 'isFocused' prop, this will toggle it when the element is clicked.

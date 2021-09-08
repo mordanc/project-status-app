@@ -4,13 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { axiosPromiseHandler } from 'utils/axiosPromiseHandler';
 import Label from 'components/atoms/label/Label';
 
-interface IFormInput {
-  projectManager: string;
-  projectName: string;
-  overallStatus: string;
-  modifiedDate: string;
-  percentageComplete: number;
-}
+import { IFormInput } from './types';
 
 export const Input = (props: any) => {
   return <input className="border-black border pl-1 rounded" {...props} />;

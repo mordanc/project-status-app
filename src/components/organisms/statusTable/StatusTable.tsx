@@ -7,33 +7,16 @@ import {
   selectStatusFilterType,
   updateNumberOfProjects,
 } from 'features/table/tableSlice';
-import type { Buttons } from 'components/molecules/buttonGroup/types';
+import ButtonGroup from 'components/molecules/buttonGroup/ButtonGroup';
 
 import { mockData } from './mockData';
-import ButtonGroup from '../../molecules/buttonGroup/ButtonGroup';
 import { usePagination } from './hooks/usePagination';
 import { useStatusFilter } from './hooks/useStatusFilter';
 
-import { Project, Status } from 'types';
+import { StatusTableProps, RowData, NumberOfProjects } from './types';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-interface StatusTableProps {
-  buttons: Buttons[];
-  apiData?: Project[];
-}
-
-export type NumberOfProjects = { [k in Status]: number };
-
-interface RowData {
-  id: number;
-  projectName: string;
-  projectManager: string;
-  overallStatus: Status;
-  percentageComplete: number;
-  modifiedDate: string;
-}
 
 const StatusTable = ({ apiData }: StatusTableProps) => {
   const [gridApi, setGridApi] = useState<any>(null);

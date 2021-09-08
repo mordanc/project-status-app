@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IconProps } from './types';
 import { iconLookup } from './utils';
+
+import { IconProps } from './types';
 
 const Icon = ({
   iconSize,

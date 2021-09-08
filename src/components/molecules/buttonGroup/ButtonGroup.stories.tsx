@@ -1,8 +1,6 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import ButtonGroup from './ButtonGroup';
-import Button from '../../atoms/button/Button';
 
 export default {
   title: 'Components/molecules/ButtonGroup',

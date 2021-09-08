@@ -1,13 +1,11 @@
+import { useDispatch } from 'react-redux';
+
 import NavRow from 'components/molecules/NavRow/NavRow';
 import { updateStatusFilter } from 'features/table/tableSlice';
-import { useDispatch } from 'react-redux';
 
 import SelectableList from '../selectableList/SelectableList';
 
-interface NavbarProps {
-  navItems: Array<typeof NavRow>;
-  textColor?: 'white' | 'black';
-}
+import { NavbarProps } from './types';
 
 const NavHeading = ({ text }: { text: string }) => (
   <span className="text-white font-light uppercase">{text}</span>

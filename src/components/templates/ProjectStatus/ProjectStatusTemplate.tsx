@@ -66,7 +66,7 @@ const ProjectStatusTemplate = ({
         <ContainerList containers={containers} />
 
         {loading ? (
-          <Loading color="hi" />
+          <Loading />
         ) : error ? (
           <UserMessage
             label="Oops! Something went wrong, please try again."

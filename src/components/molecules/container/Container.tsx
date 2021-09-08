@@ -1,14 +1,15 @@
-import { selectNumberOfProjectsByType } from 'features/table/tableSlice';
 import { useSelector } from 'react-redux';
+
 import Icon from 'components/atoms/icon/Icon';
 import Label from 'components/atoms/label/Label';
+import { selectNumberOfProjectsByType } from 'features/table/tableSlice';
+
 import { ContainerProps } from './types';
 
 const Container = ({
   iconType,
   iconSize,
   labelBody,
-  labelTitle,
   backgroundColor = 'white',
   isFocused,
   onClick,

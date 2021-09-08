@@ -1,9 +1,9 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Provider } from 'react-redux';
 
+import { store } from 'app/store';
+
 import SelectableList from './SelectableList';
-import { store } from '../../../app/store';
 
 export default {
   title: 'Components/organisms/SelectableList',

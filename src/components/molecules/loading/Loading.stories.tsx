@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Loading from './Loading';
@@ -9,9 +8,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Loading>;
 
-const Template: ComponentStory<typeof Loading> = args => <Loading {...args} />;
+const Template: ComponentStory<typeof Loading> = args => <Loading />;
 
 export const Error = Template.bind({});
-Error.args = {
-  color: 'sight',
-};
+Error.args = {};

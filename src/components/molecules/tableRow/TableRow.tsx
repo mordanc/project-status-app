@@ -1,32 +1,13 @@
-import React from 'react';
-import { Status } from '../../../types';
-import Icon from '../../atoms/icon/Icon';
+import Icon from 'components/atoms/icon/Icon';
 
-export interface TableRowProps {
-  projectManager: string;
-  projectName: string;
-  overallStatus: Status;
-  percentageComplete: number;
-  modifiedDate: string;
-  children: JSX.Element[];
-}
+import { getIconColor } from './utils';
 
-const getIconColor = (status: Status) => {
-  const lowerCaseStatus = status.toLocaleLowerCase();
-  return lowerCaseStatus === 'g'
-    ? 'green'
-    : lowerCaseStatus === 'r'
-    ? 'red'
-    : 'yellow';
-};
+import { TableRowProps } from './types';
 
 const TableRow = ({
   projectManager,
   projectName,
   overallStatus,
-  percentageComplete,
-  modifiedDate,
-  children,
 }: TableRowProps) => {
   const statusColor = getIconColor(overallStatus);
   return (

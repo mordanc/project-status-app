@@ -1,16 +1,9 @@
-import { ContainerProps } from 'components/molecules/container/types';
-import React from 'react';
-import { Status } from 'types';
+import Container from 'components/molecules/container/Container';
 
-import Container from '../../molecules/container/Container';
 import SelectableList from '../selectableList/SelectableList';
 import { useContainerListDispatch } from './hooks/useContainerListDispatch';
 
-interface ContainerListProps {
-  containers?: Partial<ContainerProps & { filterValue: Status }>[];
-}
-
-export type ContainerPropsList = {};
+import { ContainerListProps } from './types';
 
 const ContainerList = ({ containers }: ContainerListProps) => {
   const { applyTableStatusFilter } = useContainerListDispatch();

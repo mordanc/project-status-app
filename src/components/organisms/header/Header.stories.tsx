@@ -1,9 +1,9 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 
+import * as IconStories from 'components/atoms/icon/Icon.stories';
+
 import { Header } from './Header';
-import * as IconStories from '../../atoms/icon/Icon.stories';
 
 export default {
   title: 'Components/organisms/Header',

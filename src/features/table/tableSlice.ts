@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NumberOfProjects } from 'components/organisms/statusTable/StatusTable';
-import { RootState } from '../../app/store';
+
+import { RootState } from 'app/store';
+import { NumberOfProjects } from 'components/organisms/statusTable/types';
+
 import { Status, StatusTypes } from '../../types';
 
 export interface TableState {

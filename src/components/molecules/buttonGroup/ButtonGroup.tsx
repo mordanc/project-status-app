@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Button from '../../atoms/button/Button';
+import Button from 'components/atoms/button/Button';
 
 import { ButtonGroupProps } from './types';
 

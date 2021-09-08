@@ -1,11 +1,12 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Provider } from 'react-redux';
 
-import ContainerList from './ContainerList';
-import * as IconStories from '../../atoms/icon/Icon.stories';
-import { store } from '../../../app/store';
+import { store } from 'app/store';
+import * as IconStories from 'components/atoms/icon/Icon.stories';
 import { ContainerProps } from 'components/molecules/container/types';
+
+import ContainerList from './ContainerList';
+
 import { Status } from 'types';
 
 export default {

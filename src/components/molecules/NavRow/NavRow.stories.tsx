@@ -1,8 +1,8 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import * as IconStories from 'components/atoms/icon/Icon.stories';
+
 import NavRow from './NavRow';
-import * as IconStories from '../../atoms/icon/Icon.stories';
 
 export default {
   title: 'Components/molecules/NavRow',

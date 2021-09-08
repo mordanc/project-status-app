@@ -1,19 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { IconProps } from 'components/atoms/icon/types';
+import Icon from 'components/atoms/icon/Icon';
 
-import Icon from '../../atoms/icon/Icon';
-
-type NavRowIcon = Omit<IconProps, 'iconSize'>;
-
-interface NavRowProps extends NavRowIcon {
-  orientation?: 'row' | 'col';
-  rowText: string;
-  textColor?: 'white' | 'black';
-  onClick(): any;
-  isFocused?: boolean;
-  route: string;
-}
+import { NavRowProps } from './types';
 
 const NavRow = ({
   rowText,
