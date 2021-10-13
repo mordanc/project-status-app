@@ -13,11 +13,6 @@ export const Header = () => {
             Home
           </button>
         </Link>
-        <Link to="/about">
-          <button className="transform transition hover:scale-105 hover:text-blue-300 mx-2">
-            About
-          </button>
-        </Link>
         <Link to="/admin">
           <button className="transform transition hover:scale-105 hover:text-blue-300 mx-2">
             Admin

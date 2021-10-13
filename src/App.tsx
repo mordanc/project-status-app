@@ -7,18 +7,6 @@ import CreateProjectPage from 'pages/CreateProjectPage/CreateProjectPage';
 
 import './App.css';
 
-function About() {
-  return (
-    <div>
-      <div className="mt-12">one</div>
-      <div>two</div>
-      <button className="bg-blue-400 hover:opacity-70 border-black px-2 rounded transition">
-        button
-      </button>
-    </div>
-  );
-}
-
 function Admin() {
   return <h2 className="text-black text-3xl pl-10 pt-20">Admin Content</h2>;
 }
@@ -35,7 +23,6 @@ function App() {
           </div>
           <div className="w-4/5">
             <Switch>
-              <Route path="/about" component={About} />
               <Route path="/admin" component={Admin} />
               <Route path="/createProject" component={CreateProjectPage} />
               <Route path="/" component={ProjectStatusPage} />
